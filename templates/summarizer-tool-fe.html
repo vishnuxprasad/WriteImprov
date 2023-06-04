@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summarization Tool</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: black;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .radio-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .radio-button {
+            margin: 0 10px;
+        }
+
+        .input-box {
+            width: 400px;
+            margin-bottom: 20px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .input-box textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+            border: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-box textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .input-box textarea::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            border-radius: 5px;
+        }
+
+        .button {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .summary {
+            width: 400px;
+            margin-top: 20px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            position: relative;
+        }
+
+        .summary textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+            border: none;
+            outline: none;
+        }
+
+        .summary textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .summary textarea::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            border-radius: 5px;
+        }
+
+        .copy-button {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: grey;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .login-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Summarization Tool</h1>
+        <div class="login-button">Login</div>
+    </div>
+    <div class="container">
+        <div class="radio-buttons">
+            <div class="radio-button">
+                <input type="radio" id="articleSummarization" name="inputType" value="url" checked>
+                <label for="articleSummarization">Article Summarization</label>
+            </div>
+            <div class="radio-button">
+                <input type="radio" id="paragraphSummarization" name="inputType" value="text">
+                <label for="paragraphSummarization">Paragraph Summarization</label>
+            </div>
+        </div>
+        <div class="input-box">
+            <textarea id="inputText" placeholder="Provide the URL to the article that is to be summarized"></textarea>
+        </div>
+        <button id="summarizeButton" class="button">Summarize</button>
+        <div class="summary" id="summaryBox">
+            <textarea id="summaryText" readonly></textarea>
+            <div class="copy-button" id="copyButton">Copy Content</div>
+        </div>
+        <div id="error" class="error"></div>
+    </div>
+    <script>
+        document.getElementById('summarizeButton').addEventListener('click', function() {
+            var inputType = document.querySelector('input[name="inputType"]:checked').value;
+            var inputText = document.getElementById('inputText').value.trim();
+
+            if (inputText === '') {
+                document.getElementById('error').textContent = 'Please provide input text.';
+                document.getElementById('summaryBox').style.display = 'none';
+                return;
+            } else {
+                document.getElementById('error').textContent = '';
+            }
+
+            var data = {
+                inputType: inputType,
+                inputText: inputText
+            };
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/summarize', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('summaryText').value = response.summary;
+                    document.getElementById('summaryBox').style.display = 'block';
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            document.getElementById('summaryText').select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        });
+
+        var articleSummarization = document.getElementById('articleSummarization');
+        var paragraphSummarization = document.getElementById('paragraphSummarization');
+        var inputText = document.getElementById('inputText');
+
+        articleSummarization.addEventListener('change', function() {
+            inputText.placeholder = 'Provide the URL to the article that is to be summarized';
+            inputText.value = '';
+            inputText.style.borderColor = 'grey';
+        });
+
+        paragraphSummarization.addEventListener('change', function() {
+            inputText.placeholder = 'Provide the paragraph that is to be summarized';
+            inputText.value = '';
+            inputText.style.borderColor = 'grey';
+        });
+
+        inputText.addEventListener('input', function() {
+            inputText.style.borderColor = 'black';
+        });
+    </script>
+</body>
+</html>

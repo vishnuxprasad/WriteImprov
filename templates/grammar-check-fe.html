@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grammar Correction</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        
+        #container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 0;
+            border-radius: 5px;
+        }
+        
+        #grammarForm {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #inputText {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        #inputText::placeholder {
+            color: #999;
+        }
+        
+        #correctedText {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        
+        #correctedText[readonly] {
+            background-color: #f2f2f2;
+        }
+        
+        input[type="submit"],
+        .button {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover,
+        .button:hover {
+            background-color: #f2f2f2;
+        }
+        
+        #loginButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #loginButton:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Grammar Correction</h1>
+        <form id="grammarForm">
+            <label for="inputText">Input Text:</label><br>
+            <textarea id="inputText" name="inputText" rows="4" cols="50" placeholder="Enter incorrect grammar here..."></textarea><br>
+            <input type="submit" value="Correct Grammar" class="button">
+        </form>
+        <div id="resultContainer" style="display: none;">
+            <label for="correctedText">Corrected Text:</label><br>
+            <textarea id="correctedText" name="correctedText" rows="4" cols="50" readonly></textarea><br>
+        </div>
+    </div>
+    
+    <button id="loginButton" class="button">Login</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#grammarForm').submit(function(event) {
+                event.preventDefault();
+                var inputText = $('#inputText').val();
+                if (inputText === "") {
+                    $('#correctedText').val("Error: Input text is empty");
+                    $('#resultContainer').show();
+                    return;
+                }
+    
+                $.ajax({
+                    url: '/api/correct_grammar',
+                    type: 'POST',
+                    data: { input_text: inputText },
+                    success: function(response) {
+                        $('#correctedText').val(response.corrected_text);
+                        $('#resultContainer').show();
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.responseText;
+                        $('#correctedText').val("Error: " + errorMessage);
+                        $('#resultContainer').show();
+                    }
+                });
+            });
+
+            $('#inputText').on('input', function() {
+                if ($(this).val() !== "") {
+                    $(this).css('border-color', '#000');
+                    $(this).attr('placeholder', '');
+                    $('#correctedText').val("");
+                } else {
+                    $(this).css('border-color', '#ccc');
+                    $(this).attr('placeholder', 'Enter incorrect grammar here...');
+                }
+            });
+
+            $('#loginButton').click(function() {
+                // Perform login action
+                // Add your login logic here
+            });
+        });
+    </script>
+</body>
+</html>

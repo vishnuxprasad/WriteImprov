@@ -1,0 +1,5 @@
+transformers
+sentenpiece
+waitress
+flask
+beautifulsoup4

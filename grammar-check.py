@@ -4,10 +4,13 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 app = Flask(__name__)
 app.debug = True
-model_name = 'deep-learning-analytics/GrammarCorrector'
+model_path = './models/GrammarCorrector'
 torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
-tokenizer = T5Tokenizer.from_pretrained(model_name)
-model = T5ForConditionalGeneration.from_pretrained(model_name).to(torch_device)
+tokenizer = T5Tokenizer.from_pretrained(model_path)
+model = T5ForConditionalGeneration.from_pretrained(model_path).to(torch_device)
+# model_name = 'deep-learning-analytics/GrammarCorrector'
+# model = T5ForConditionalGeneration.from_pretrained(model_name).to(torch_device)
+
 
 @app.route('/')
 def home():

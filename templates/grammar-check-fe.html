@@ -2,7 +2,13 @@
 <html>
 <head>
     <title>Grammar Correction</title>
+    <link rel="stylesheet" href="./../navbar.css" />
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
         body {
             background-color: #f2f2f2;
             font-family: Arial, sans-serif;
@@ -75,26 +81,20 @@
             background-color: #f2f2f2;
         }
         
-        #loginButton {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #000;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        #loginButton:hover {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="left">
+            <h1>WriteImprov</h1>
+        </div>
+        <div class="right">
+            <a href="#">Dictionalry</a>
+            <a href="#">Grammar Check</a>
+            <a href="#">Summairzer</a>
+            <button id="loginButton" class="button">Login</button>
+        </div>
+    </nav>
     <div id="container">
         <h1>Grammar Correction</h1>
         <form id="grammarForm">
@@ -107,8 +107,6 @@
             <textarea id="correctedText" name="correctedText" rows="4" cols="50" readonly></textarea><br>
         </div>
     </div>
-    
-    <button id="loginButton" class="button">Login</button>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

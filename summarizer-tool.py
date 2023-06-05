@@ -3,7 +3,8 @@ from transformers import pipeline
 from bs4 import BeautifulSoup
 import requests
 
-model_name = "sshleifer/distilbart-cnn-12-6"
+# model_name = "sshleifer/distilbart-cnn-12-6"
+model_name = "./models/distilbart-cnn-12-6"
 model_revision = "main"
 
 summarizer = pipeline("summarization", model=model_name, revision=model_revision)

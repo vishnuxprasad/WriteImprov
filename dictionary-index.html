@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">  
     <title>Dictionary App in JavaScript</title>
+    <link rel="stylesheet" href="./navbar.css" />
     <link rel="stylesheet" href="dictionary-css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CDN Link for Icons -->
@@ -10,6 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
+    <nav class="nav">
+      <div class="left">
+          <h1>WriteImprov</h1>
+      </div>
+      <div class="right">
+          <a href="#">Dictionalry</a>
+          <a href="#">Grammar Check</a>
+          <a href="#">Summairzer</a>
+          <button id="loginButton" class="button">Login</button>
+      </div>
+  </nav>
+  <div class="main">
     <div class="wrapper">
       <header>English Dictionary</header>
       <div class="search">
@@ -48,6 +61,7 @@
         </div>
       </ul>
     </div>
+  </div>
 
     <script src="dictionary-script.js"></script>
 

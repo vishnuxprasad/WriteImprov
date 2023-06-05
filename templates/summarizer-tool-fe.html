@@ -2,18 +2,20 @@
 <html>
 <head>
     <title>Summarization Tool</title>
+    <link rel="stylesheet" href="./../navbar.css" />
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
             margin: 0;
             padding: 0;
         }
 
-        .header {
+        {% comment %} .header {
             background-color: black;
             width: 100%;
             text-align: center;
@@ -22,14 +24,14 @@
             position: fixed;
             top: 0;
             left: 0;
-        }
+        } {% endcomment %}
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 100px;
+            {% comment %} margin-top: 100px; {% endcomment %}
         }
 
         .radio-buttons {
@@ -67,15 +69,6 @@
         .input-box textarea::-webkit-scrollbar-thumb {
             background-color: darkgrey;
             border-radius: 5px;
-        }
-
-        .button {
-            margin-top: 20px;
-            background-color: black;
-            color: white;
-            border-radius: 10px;
-            padding: 10px 20px;
-            cursor: pointer;
         }
 
         .summary {
@@ -121,24 +114,20 @@
             font-size: 12px;
             margin-top: 5px;
         }
-
-        .login-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Summarization Tool</h1>
-        <div class="login-button">Login</div>
-    </div>
+    <nav class="nav">
+        <div class="left">
+            <h1>WriteImprov</h1>
+        </div>
+        <div class="right">
+            <a href="#">Dictionalry</a>
+            <a href="#">Grammar Check</a>
+            <a href="#">Summairzer</a>
+            <button id="loginButton" class="button">Login</button>
+        </div>
+    </nav>
     <div class="container">
         <div class="radio-buttons">
             <div class="radio-button">

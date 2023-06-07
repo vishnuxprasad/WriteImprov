@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grammar Correction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav class="nav">
+    <div class="left">
+        <h1>WriteImprov</h1>
+    </div>
+    <div class="right">
+        <a href="/dictionary">Dictionary</a>
+        <a href="/grammar-correction">Grammar Check</a>
+        <a href="/text-summarization">Summarizer</a>
+        <button id="loginButton" class="button">Login</button>
+    </div>
+</nav>
+<h1>Grammar Correction</h1>
+
+<input type="radio" id="grammarRadio" name="correctionType" checked>
+<label for="grammarRadio">Grammar Check</label>
+
+<input type="radio" id="replaceRadio" name="correctionType">
+<label for="replaceRadio">Replace Text</label>
+
+<form id="grammarForm" action="/grammar-correction" method="POST">
+  <textarea name="input_text" id="inputText" rows="10" cols="50"></textarea><br>
+  <input type="submit" value="Check Grammar">
+</form>
+
+<div id="replaceForm" style="display: none;">
+  <grammarly-editor-plugin><textarea name="replace_text" id="replaceText" rows="10" cols="50"></textarea></grammarly-editor-plugin>
+</div>
+
+<h2 id="correctedTextTitle" style="display: none;">Corrected Text:</h2>
+<textarea id="output_text" rows="10" cols="50" readonly style="display: none;"></textarea>
+<script src="https://cdn.jsdelivr.net/npm/@grammarly/editor-sdk?clientId=YOUR_CLIENT_ID"></script>
+<script>
+  document.getElementById("grammarRadio").addEventListener("change", function () {
+    document.getElementById("grammarForm").style.display = "block";
+    document.getElementById("replaceForm").style.display = "none";
+    document.getElementById("correctedTextTitle").style.display = "none";
+    document.getElementById("output_text").style.display = "none";
+  });
+
+  document.getElementById("replaceRadio").addEventListener("change", function () {
+    document.getElementById("replaceForm").style.display = "block";
+    document.getElementById("grammarForm").style.display = "none";
+    document.getElementById("correctedTextTitle").style.display = "none";
+    document.getElementById("output_text").style.display = "none";
+  });
+
+  document.getElementById("grammarForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const inputText = document.getElementById("inputText").value;
+
+    if (inputText.trim() === "") {
+      document.getElementById("correctedTextTitle").style.display = "block";
+      document.getElementById("output_text").style.display = "block";
+      document.getElementById("output_text").value = "Error: Input text is empty";
+      return;
+    }
+
+    const response = await fetch("/grammar-correction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ input_text: inputText })
+    });
+
+    const data = await response.json();
+    document.getElementById("correctedTextTitle").style.display = "block";
+    document.getElementById("output_text").style.display = "block";
+    document.getElementById("output_text").value = data.corrected_text;
+  });
+</script>
+</body>
+</html>

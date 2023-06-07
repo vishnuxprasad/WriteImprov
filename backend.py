@@ -9,6 +9,7 @@ import atexit
 
 app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+
 model_path = './models/GrammarCorrector'
 torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
 tokenizer = T5Tokenizer.from_pretrained(model_path)
@@ -53,6 +54,11 @@ def text_summarization():
     if request.method == 'POST':
         input_type = request.json.get('input_type')
         input_text = request.json.get('input_text')
+
+        # Check if result is already cached
+        cached_result = cache.get(input_text)
+        if cached_result is not None:
+            return jsonify({'summary':cached_result})
         
         if input_type == 'url':
             r = requests.get(input_text)
@@ -63,11 +69,12 @@ def text_summarization():
         else:
             article = input_text
 
-        model_name = "sshleifer/distilbart-cnn-12-6"
+        # model_name = "sshleifer/distilbart-cnn-12-6"
+        model_name = "./models/distilbart-cnn-12-6"
         model_revision = "main"
         summarizer = pipeline("summarization", model=model_name, revision=model_revision)
-
         max_chunk = 500
+
         article = article.replace('.', '.<eos>')
         article = article.replace('?', '?<eos>')
         article = article.replace('!', '!<eos>')
@@ -95,6 +102,9 @@ def text_summarization():
 
         summary = ' '.join(summaries)
 
+        # Cache the result
+        cache.set(input_text, summary)
+
         return jsonify({'summary': summary})
 
     return render_template('ts-fe.html')
@@ -107,4 +117,5 @@ def clear_cache():
 atexit.register(clear_cache)
 
 if __name__ == '__main__':
+    
     app.run(debug=True, port=1000)

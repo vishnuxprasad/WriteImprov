@@ -2,9 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">  
-    <title>Dictionary App in JavaScript</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='dictionary-css.css') }}">
+    <title>WriteImprov Dictionary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-css.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dictionary-css.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CDN Link for Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -13,24 +13,23 @@
   <body>
   <nav class="nav">
       <div class="left">
-          <h1>WriteImprov</h1>
+        <h1>WriteImprov</h1>
       </div>
       <div class="right">
           <a href="/dictionary">Dictionary</a>
           <a href="/grammar-correction">Grammar Check</a>
           <a href="/text-summarization">Summairzer</a>
-          <button id="loginButton" class="button">Login</button>
       </div>
   </nav>
   <div class="main">
     <div class="wrapper">
-      <header>English Dictionary</header>
+      <header>Dictionary</header>
       <div class="search">
         <input type="text" placeholder="Search a word" required spellcheck="false">
         <i class="fas fa-search"></i>
         <span class="material-icons">close</span>
       </div>
-      <p class="info-text">Type any existing word and press enter to get meaning, example, synonyms, etc.</p>
+      <p class="info-text">Type a word and press enter to get meaning, example, synonyms etc.</p>
       <ul>
         <li class="word">
           <div class="details">
@@ -63,7 +62,7 @@
     </div>
   </div>
 
-  <script src="{{ url_for('static', filename='dictionary-script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/dictionary-script.js') }}"></script>
 
   </body>
 </html>

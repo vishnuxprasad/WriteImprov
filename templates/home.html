@@ -3,18 +3,7 @@
 <head>
   <title>WriteImprov</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ url_for('static', filename='home-css.css') }}">
-  <style>
-    @media (max-width: 768px) {
-      /* Adjust styles for smaller screens */
-      .content {
-        flex-direction: column;
-      }
-      .app-card {
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home-css.css') }}">
 </head>
 <body>
   <div class="header">
@@ -23,18 +12,15 @@
   <div class="content">
     <div class="app-card" onclick="openApp('/dictionary')">
       <h2>Dictionary</h2>
-      <p>English Dictionary</p>
-      <img src="app1.png" alt="App 1 Screenshot">
+      <p>English Dictionary made using dictionary API</p>
     </div>
     <div class="app-card" onclick="openApp('/grammar-correction')">
       <h2>Grammar Correction</h2>
-      <p>Grammar correction using T5 model</p>
-      <img src="app2.png" alt="App 2 Screenshot">
+      <p>Grammar correction using T5 model & Grammarly SDK editor</p>
     </div>
     <div class="app-card" onclick="openApp('/text-summarization')">
       <h2>Summarization</h2>
-      <p>Summarization using Model</p>
-      <img src="app3.png" alt="App 3 Screenshot">
+      <p>Text Summarization using sshleifer distilbart cnn 12-6 Natural Language Processing (NLP) Model</p>
     </div>
     <!-- Add more app cards here -->
   </div>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+
 .nav {
     height: 100px;
     font-family: sans-serif;
@@ -13,6 +14,11 @@
   
   .nav .left {
     flex: 1;
+  }
+
+  .nav .left a{
+    text-decoration: none;
+    color: white;
   }
   
   .nav .right {

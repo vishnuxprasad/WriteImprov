@@ -35,8 +35,9 @@
     <div class="template">
       <div class="ioTemplate">
         <header>Grammar Correction</header>
-        <input type="radio" id="grammarRadio" name="correctionType" checked />
-        <label for="grammarRadio">Grammar Check</label>
+        <div class="ioTemplateRadio">
+          <input type="radio" id="grammarRadio" name="correctionType" checked />
+          <label for="grammarRadio">Using T5 model</label>
 
         <input type="radio" id="replaceRadio" name="correctionType" />
         <label for="replaceRadio">Replace Text</label>
@@ -63,7 +64,9 @@
           </grammarly-editor-plugin>
         </div>
 
-        <h2 id="correctedTextTitle" style="display: none">Corrected Text:</h2>
+        <header id="correctedTextTitle" style="display: none">
+          Corrected Text
+        </header>
         <textarea
           id="output_text"
           rows="10"
@@ -74,54 +77,6 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@grammarly/editor-sdk?clientId=YOUR_CLIENT_ID"></script>
-    <script>
-      document
-        .getElementById("grammarRadio")
-        .addEventListener("change", function () {
-          document.getElementById("grammarForm").style.display = "block";
-          document.getElementById("replaceForm").style.display = "none";
-          document.getElementById("correctedTextTitle").style.display = "none";
-          document.getElementById("output_text").style.display = "none";
-        });
-
-      document
-        .getElementById("replaceRadio")
-        .addEventListener("change", function () {
-          document.getElementById("replaceForm").style.display = "block";
-          document.getElementById("grammarForm").style.display = "none";
-          document.getElementById("correctedTextTitle").style.display = "none";
-          document.getElementById("output_text").style.display = "none";
-        });
-
-      document
-        .getElementById("grammarForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const inputText = document.getElementById("inputText").value;
-
-          if (inputText.trim() === "") {
-            document.getElementById("correctedTextTitle").style.display =
-              "block";
-            document.getElementById("output_text").style.display = "block";
-            document.getElementById("output_text").value =
-              "Error: Input text is empty";
-            return;
-          }
-
-          const response = await fetch("/grammar-correction", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ input_text: inputText }),
-          });
-
-          const data = await response.json();
-          document.getElementById("correctedTextTitle").style.display = "block";
-          document.getElementById("output_text").style.display = "block";
-          document.getElementById("output_text").value = data.corrected_text;
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/gec-script.js') }}"></script>
   </body>
 </html>

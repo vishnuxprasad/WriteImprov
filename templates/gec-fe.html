@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Grammar Correction</title>
+    <title>WriteImprov Grammar Correction</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -39,8 +39,9 @@
           <input type="radio" id="grammarRadio" name="correctionType" checked />
           <label for="grammarRadio">Using T5 model</label>
 
-        <input type="radio" id="replaceRadio" name="correctionType" />
-        <label for="replaceRadio">Replace Text</label>
+          <input type="radio" id="replaceRadio" name="correctionType" />
+          <label for="replaceRadio">Using Grammarly</label>
+        </div>
 
         <form id="grammarForm" action="/grammar-correction" method="POST">
           <textarea

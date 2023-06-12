@@ -1,53 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Text Summarization</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-css.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/ts-fe-css.css') }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <nav class="nav">
-    <div class="left">
-      <a href="/"><h1>WriteImprov</h1></a>
-    </div>
-    <div class="right">
+  <head>
+    <title>Write Improv Text Summarization</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/navbar-css.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/ts-fe-css.css') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="left">
+        <a href="/"><h1>WriteImprov</h1></a>
+      </div>
+      <div class="right">
         <a href="/dictionary">Dictionary</a>
         <a href="/grammar-correction">Grammar Check</a>
         <a href="/text-summarization">Summairzer</a>
-    </div>
-</nav>
-  <h1>Text Summarization</h1>
-  <form action="/text-summarization" method="POST">
-    <input type="radio" id="input_type_url" name="input_type" value="url" checked>
-    <label for="input_type_url">URL</label><br>
-    <input type="radio" id="input_type_text" name="input_type" value="text">
-    <label for="input_type_text">Text</label><br>
-    <textarea name="input_text" rows="10" cols="50"></textarea><br>
-    <input type="submit" value="Summarize">
-  </form>
-  <h2>Summary:</h2>
-  <textarea id="output_summary" rows="10" cols="50" readonly></textarea>
+      </div>
+    </nav>
+    <h1>Text Summarization</h1>
+    <form action="/text-summarization" method="POST">
+      <input
+        type="radio"
+        id="input_type_url"
+        name="input_type"
+        value="url"
+        checked
+      />
+      <label for="input_type_url">URL</label><br />
+      <input type="radio" id="input_type_text" name="input_type" value="text" />
+      <label for="input_type_text">Text</label><br />
+      <textarea name="input_text" rows="10" cols="50"></textarea><br />
+      <input type="submit" value="Summarize" />
+    </form>
+    <h2>Summary:</h2>
+    <textarea id="output_summary" rows="10" cols="50" readonly></textarea>
 
-  <script>
-    document.querySelector("form").addEventListener("submit", async function (e) {
-      e.preventDefault();
+    <script>
+      document
+        .querySelector("form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-      const inputType = document.querySelector("input[name='input_type']:checked").value;
-      const inputText = document.querySelector("textarea[name='input_text']").value;
+          const inputType = document.querySelector(
+            "input[name='input_type']:checked"
+          ).value;
+          const inputText = document.querySelector(
+            "textarea[name='input_text']"
+          ).value;
 
-      const response = await fetch("/text-summarization", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ input_type: inputType, input_text: inputText })
-      });
+          const response = await fetch("/text-summarization", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              input_type: inputType,
+              input_text: inputText,
+            }),
+          });
 
-      const data = await response.json();
-      document.getElementById("output_summary").value = data.summary;
-    });
-  </script>
-</body>
+          const data = await response.json();
+          document.getElementById("output_summary").value = data.summary;
+        });
+    </script>
+  </body>
 </html>

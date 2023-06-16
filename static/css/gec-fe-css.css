@@ -35,16 +35,21 @@ input[type="radio"] {
   margin-left: 20px;
 }
 
-/*.ioTemplateRadio {
-  display: flex;
-  align-items: center;
-}*/
+.ioTemplateRadio {
+  margin-left: 15px;
+}
+
+#grammarForm input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+}
 
 #grammarForm textarea,
 #replaceForm textarea,
 #output_text {
   resize: none;
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 #correctedTextTitle header {

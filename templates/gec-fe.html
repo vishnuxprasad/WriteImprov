@@ -47,11 +47,11 @@
           <textarea
             name="input_text"
             id="inputText"
-            rows="10"
-            cols="50"
+            rows="12"
+            cols="66"
           ></textarea
           ><br />
-          <input type="submit" value="Check Grammar" />
+          <input type="submit" id="checkGrammarBtn" value="Check Grammar" />
         </form>
 
         <div id="replaceForm" style="display: none">
@@ -59,22 +59,23 @@
             <textarea
               name="replace_text"
               id="replaceText"
-              rows="10"
-              cols="50"
+              rows="12"
+              cols="66"
             ></textarea>
           </grammarly-editor-plugin>
         </div>
-
-        <header id="correctedTextTitle" style="display: none">
-          Corrected Text
-        </header>
-        <textarea
-          id="output_text"
-          rows="10"
-          cols="50"
-          readonly
-          style="display: none"
-        ></textarea>
+        <div class="ioTemplateOutput">
+          <header id="correctedTextTitle" style="display: none">
+            Corrected Text
+          </header>
+          <textarea
+            id="output_text"
+            rows="12"
+            cols="66"
+            readonly
+            style="display: none"
+          ></textarea>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@grammarly/editor-sdk?clientId=YOUR_CLIENT_ID"></script>

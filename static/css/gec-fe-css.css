@@ -14,7 +14,7 @@
   justify-content: center;
 }
 .ioTemplate {
-  width: 420px;
+  width: 500px;
   border-radius: 7px;
   background: #fff;
   padding: 25px 28px 45px;
@@ -36,12 +36,15 @@ input[type="radio"] {
 }
 
 .ioTemplateRadio {
-  margin-left: 15px;
+  margin-left: 55px;
 }
 
 #grammarForm input[type="submit"] {
   display: block;
-  margin: 0 auto;
+  margin: 20px auto 0;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 8px;
 }
 
 #grammarForm textarea,
@@ -49,13 +52,16 @@ input[type="radio"] {
 #output_text {
   resize: none;
   margin-top: 10px;
-  margin-left: 10px;
 }
 
 #correctedTextTitle header {
   font-size: 28px;
   font-weight: 500;
   text-align: center;
+}
+
+.ioTemplateOutput{
+  margin-top: 15px;
 }
 /*
 input[type="radio"] {

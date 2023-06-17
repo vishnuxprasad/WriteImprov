@@ -7,11 +7,12 @@
 }
 
 .template {
-  height: calc(100vh - 100px);
+  height: auto;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px; /* Add top padding to create the minimum distance */
 }
 .ioTemplate {
   width: 500px;
@@ -66,6 +67,7 @@ input[type="radio"] {
 #output_text {
   padding: 5px;
   border: 1px solid #ccc;
+  border-radius: 9px;
   overflow-y: scroll;
 }
 

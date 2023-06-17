@@ -1,69 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
 
 .nav {
-    height: 100px;
-    font-family: sans-serif;
-    padding: 20px;
-    width: 100%;
-    background: black;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav .left {
-    flex: 1;
+  height: 100px;
+  font-family: sans-serif;
+  padding: 20px;
+  width: 100%;
+  background: black;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav .left {
+  flex: 1;
+}
+
+.nav .left a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav .right {
+  flex-grow: 1;
+  display: flex;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav .right a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav .left h1 {
+  font-family: "Leckerli One", cursive;
+  font-size: 35px;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Media query for responsive navbar */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
   }
 
-  .nav .left a{
-    text-decoration: none;
-    color: white;
-  }
-  
+  .nav .left,
   .nav .right {
-    flex-grow: 1;
-    display: flex;
-    padding-right: 20px;
-    align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    margin-bottom: 10px;
   }
-  
-  .nav .right a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  .nav .left h1 {
-    font-family: 'Leckerli One', cursive;
-    font-size: 35px;
-    background: transparent;
-    margin: 0;
+
+  .nav .right {
     padding: 0;
-    position: relative;
   }
-  
-  /* Media query for responsive navbar */
-  @media (max-width: 768px) {
-    .nav {
-      flex-direction: column;
-      height: auto;
-      padding: 10px;
-    }
-  
-    .nav .left,
-    .nav .right {
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-  
-    .nav .right {
-      padding: 0;
-    }
-  
-    .nav .right a {
-      margin: 5px;
-    }
+
+  .nav .right a {
+    margin: 5px;
   }
-  
+}

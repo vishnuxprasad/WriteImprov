@@ -7,11 +7,12 @@
 }
 
 .template {
-  height: calc(100vh - 100px);
+  height: auto;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px; /* Add top padding to create the minimum distance */
 }
 .ioTemplate {
   width: 500px;
@@ -30,6 +31,15 @@
 .ioTemplateOutput #output_summary {
   resize: none;
   margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  overflow-y: scroll;
+}
+
+.ioTemplateInput textarea[name="input_text"]:hover,
+.ioTemplateOutput #output_summary:hover {
+  border-color: black;
 }
 
 textarea[name="input_text"]::-webkit-scrollbar,
@@ -50,4 +60,23 @@ textarea[name="input_text"]::-webkit-scrollbar-thumb,
 textarea[name="input_text"]::-webkit-scrollbar-thumb:hover,
 #output_summary::-webkit-scrollbar-thumb :hover {
   background: #555;
+}
+
+.ioTemplateInput input[type="submit"] {
+  display: block;
+  margin: 20px auto 0;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border-color: #c2c0c0;
+}
+
+.ioTemplateInput input[type="submit"]:hover {
+  background-color: rgb(255, 255, 255);
+  border-color: #4d59fb;
+  border-width: 2px;
+}
+
+.ioTemplateOutput {
+  margin-top: 15px;
 }

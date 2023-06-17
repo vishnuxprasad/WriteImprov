@@ -12,7 +12,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/ts-fe-css.css') }}"
+      href="{{ url_for('static', filename='css/ts-css.css') }}"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
@@ -24,54 +24,39 @@
       <div class="right">
         <a href="/dictionary">Dictionary</a>
         <a href="/grammar-correction">Grammar Check</a>
-        <a href="/text-summarization">Summairzer</a>
+        <a href="/text-summarization">Summarizer</a>
       </div>
     </nav>
-    <h1>Text Summarization</h1>
-    <form action="/text-summarization" method="POST">
-      <input
-        type="radio"
-        id="input_type_url"
-        name="input_type"
-        value="url"
-        checked
-      />
-      <label for="input_type_url">URL</label><br />
-      <input type="radio" id="input_type_text" name="input_type" value="text" />
-      <label for="input_type_text">Text</label><br />
-      <textarea name="input_text" rows="10" cols="50"></textarea><br />
-      <input type="submit" value="Summarize" />
-    </form>
-    <h2>Summary:</h2>
-    <textarea id="output_summary" rows="10" cols="50" readonly></textarea>
-
-    <script>
-      document
-        .querySelector("form")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const inputType = document.querySelector(
-            "input[name='input_type']:checked"
-          ).value;
-          const inputText = document.querySelector(
-            "textarea[name='input_text']"
-          ).value;
-
-          const response = await fetch("/text-summarization", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              input_type: inputType,
-              input_text: inputText,
-            }),
-          });
-
-          const data = await response.json();
-          document.getElementById("output_summary").value = data.summary;
-        });
-    </script>
+    <div class="template">
+      <div class="ioTemplate">
+        <header>Text Summarization</header>
+        <div class="ioTemplateInput">
+          <form action="/text-summarization" method="POST">
+            <input
+              type="radio"
+              id="input_type_url"
+              name="input_type"
+              value="url"
+              checked
+            />
+            <label for="input_type_url">URL</label><br />
+            <input
+              type="radio"
+              id="input_type_text"
+              name="input_type"
+              value="text"
+            />
+            <label for="input_type_text">Text</label><br />
+            <textarea name="input_text" rows="12" cols="66"></textarea><br />
+            <input type="submit" value="Summarize" />
+          </form>
+        </div>
+        <div class="ioTemplateOutput">
+          <header>Summary</header>
+          <textarea id="output_summary" rows="12" cols="66" readonly></textarea>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/ts-script.js') }}"></script>
   </body>
 </html>

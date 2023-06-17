@@ -80,3 +80,7 @@ textarea[name="input_text"]::-webkit-scrollbar-thumb:hover,
 .ioTemplateOutput {
   margin-top: 15px;
 }
+
+.error {
+  color: red;
+}

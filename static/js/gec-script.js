@@ -28,7 +28,7 @@ document
       document.getElementById("output_text").style.display = "none";
       document.getElementById("checkGrammarBtn").style.display = "none";
       document.getElementById("error_message").textContent =
-        "Error! Input text is empty";
+        "Error! Input field is empty!";
       return;
     }
 

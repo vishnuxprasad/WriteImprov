@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 @media (max-width: 768px) {
   .content {
@@ -58,7 +58,7 @@ body {
   font-size: 28px;
   margin-top: 0;
   margin-bottom: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 900;
   text-align: center;
 }
@@ -67,7 +67,7 @@ body {
   margin-top: 5;
   margin-bottom: 20px;
   font-family: "Courier New", Courier, monospace;
-  font-weight: 550;
+  font-weight: 510;
   word-spacing: 2px;
   text-align: center;
 }

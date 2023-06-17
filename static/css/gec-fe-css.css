@@ -45,6 +45,13 @@ input[type="radio"] {
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 8px;
+  border-color: #c2c0c0;
+}
+
+#grammarForm input[type="submit"]:hover {
+  background-color: rgb(255, 255, 255);
+  border-color: #4d59fb;
+  border-width: 2px;
 }
 
 #grammarForm textarea,
@@ -54,15 +61,54 @@ input[type="radio"] {
   margin-top: 10px;
 }
 
+#grammarForm textarea,
+#replaceForm textarea,
+#output_text {
+  padding: 5px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+#grammarForm textarea:hover,
+#replaceForm textarea:hover,
+#output_text:hover {
+  border-color: black;
+}
+
 #correctedTextTitle header {
   font-size: 28px;
   font-weight: 500;
   text-align: center;
 }
 
-.ioTemplateOutput{
+.ioTemplateOutput {
   margin-top: 15px;
 }
+
+#inputText::-webkit-scrollbar,
+#replaceText::-webkit-scrollbar,
+#output_text::-webkit-scrollbar {
+  width: 8px;
+}
+
+#inputText::-webkit-scrollbar-track,
+#replaceText::-webkit-scrollbar-track,
+#output_text::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#inputText::-webkit-scrollbar-thumb,
+#replaceText::-webkit-scrollbar-thumb,
+#output_text::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#inputText::-webkit-scrollbar-thumb:hover,
+#replaceText::-webkit-scrollbar-thumb:hover,
+#output_text::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /*
 input[type="radio"] {
   display: none;

@@ -2,12 +2,10 @@ from transformers import pipeline
 from bs4 import BeautifulSoup
 import requests
 
-# model_name = "./models/distilbart-cnn-12-6"
 model_name = "sshleifer/distilbart-cnn-12-6"
 model_revision = "main"
 summarizer = pipeline("summarization", model=model_name, revision=model_revision)
 
-#URL = "https://www.securenetworkhub.com/solutions/network-security/5-things-cisos-should-consider-when-employees-use-chatgpt-according-to-chatgpt?cid=sem_adw&gclid=Cj0KCQjwmtGjBhDhARIsAEqfDEf_5BNqMx4Luw0c03pAtXLWkei4x4CkntLXsndXyrBYGvNumCuwMIkaAvAsEALw_wcB"
 URL = "https://www.freecodecamp.org/news/what-is-game-development/"
 r = requests.get(URL)
 
@@ -37,7 +35,6 @@ for sentence in sentences:
 for chunk_id in range(len(chunks)):
     chunks[chunk_id] = ' '.join(chunks[chunk_id])
 
-# Perform summarization for each chunk
 summaries = []
 for chunk in chunks:
     res = summarizer(chunk, max_length=120, min_length=30, do_sample=False)

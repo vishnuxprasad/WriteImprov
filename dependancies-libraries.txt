@@ -1,5 +1,8 @@
+flask
+Flask-Caching
+tensorflow
+torch
 transformers
 sentenpiece
-waitress
-flask
 beautifulsoup4
+requests

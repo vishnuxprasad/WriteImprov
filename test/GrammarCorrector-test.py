@@ -1,9 +1,6 @@
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-# model_path = './models/GrammarCorrector'
-# model = T5ForConditionalGeneration.from_pretrained(model_path).to(torch_device)
-
 model_name = 'deep-learning-analytics/GrammarCorrector'
 torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
 tokenizer = T5Tokenizer.from_pretrained(model_name)

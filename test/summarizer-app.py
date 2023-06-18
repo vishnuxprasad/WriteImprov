@@ -1,11 +1,17 @@
+# initial Flask app before combining Grammar Check functionality and Summarization functionality into a single app
+# corresponding render_template 'summarizer-tool-fe.html' not available.
+
 from flask import Flask, render_template, request, jsonify
 from transformers import pipeline
 from bs4 import BeautifulSoup
 import requests
 
-# model_name = "sshleifer/distilbart-cnn-12-6"
+# model is locally avialable in ./models
 model_name = "./models/distilbart-cnn-12-6"
 model_revision = "main"
+
+# if model is locally unavailable
+# model_name = "sshleifer/distilbart-cnn-12-6"
 
 summarizer = pipeline("summarization", model=model_name, revision=model_revision)
 

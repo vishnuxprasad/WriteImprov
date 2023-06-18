@@ -1,15 +1,23 @@
+# initial Flask app before combining Grammar Check functionality and Summarization functionality into a single app
+# corresponding render_template 'grammar-check-fe.html' not available.
+
 from flask import Flask, render_template, request, jsonify
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 app = Flask(__name__)
 app.debug = True
+
+# model is locally avialable in ./models
 model_path = './models/GrammarCorrector'
 torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
-tokenizer = T5Tokenizer.from_pretrained(model_path)
-model = T5ForConditionalGeneration.from_pretrained(model_path).to(torch_device)
+
+# if model is locally unavailable
 # model_name = 'deep-learning-analytics/GrammarCorrector'
 # model = T5ForConditionalGeneration.from_pretrained(model_name).to(torch_device)
+
+tokenizer = T5Tokenizer.from_pretrained(model_path)
+model = T5ForConditionalGeneration.from_pretrained(model_path).to(torch_device)
 
 
 @app.route('/')
@@ -22,9 +30,8 @@ def api_correct_grammar():
     if not input_text:
         return jsonify({'error': 'Input text is empty'})
 
-    num_return_sequences = 1  # Change this as needed
+    num_return_sequences = 1 
 
-    # Perform grammar correction using the model
     batch = tokenizer(
         [input_text],
         truncation=True,

@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px; /* Add top padding to create the minimum distance */
+  padding-top: 20px;
 }
 .ioTemplate {
   width: 500px;

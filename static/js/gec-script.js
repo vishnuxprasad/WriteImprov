@@ -4,7 +4,7 @@ document.getElementById("grammarRadio").addEventListener("change", function () {
   document.getElementById("correctedTextTitle").style.display = "none";
   document.getElementById("output_text").style.display = "none";
   document.getElementById("checkGrammarBtn").style.display = "block";
-  document.getElementById("error_message").textContent = ""; // Clear error message
+  document.getElementById("error_message").textContent = "";
 });
 
 document.getElementById("replaceRadio").addEventListener("change", function () {
@@ -13,7 +13,7 @@ document.getElementById("replaceRadio").addEventListener("change", function () {
   document.getElementById("correctedTextTitle").style.display = "none";
   document.getElementById("output_text").style.display = "none";
   document.getElementById("checkGrammarBtn").style.display = "block";
-  document.getElementById("error_message").textContent = ""; // Clear error message
+  document.getElementById("error_message").textContent = "";
 });
 
 document
@@ -47,7 +47,6 @@ document
     document.getElementById("checkGrammarBtn").style.display = "none";
     document.getElementById("error_message").textContent = "";
 
-    // Scroll to view the corrected text
     document
       .getElementById("output_text")
       .scrollIntoView({ behavior: "smooth", block: "start" });

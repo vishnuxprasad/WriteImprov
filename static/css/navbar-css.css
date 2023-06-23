@@ -44,7 +44,6 @@
   position: relative;
 }
 
-/* Media query for responsive navbar */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;

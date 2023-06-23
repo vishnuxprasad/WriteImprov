@@ -5,10 +5,8 @@ const summarizeButton = document.querySelector("input[type='submit']");
 const outputSummary = document.getElementById("output_summary");
 const summaryHeader = document.querySelector(".ioTemplateOutput header");
 
-// Hide the summary header initially
 summaryHeader.style.display = "none";
 
-// Event listeners for radio button change
 inputTypeUrl.addEventListener("change", () => {
   inputText.placeholder = "Enter a valid URL of an article.";
   hideOutputSummary();
@@ -23,14 +21,12 @@ inputTypeText.addEventListener("change", () => {
   clearError();
 });
 
-// Event listener for input text change
 inputText.addEventListener("input", () => {
   hideOutputSummary();
   showSummarizeButton();
   clearError();
 });
 
-// Event listener for form submission
 document.querySelector("form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -71,24 +67,20 @@ document.querySelector("form").addEventListener("submit", async function (e) {
   outputSummary.scrollIntoView({ behavior: "smooth" });
 });
 
-// Function to hide the output summary
 function hideOutputSummary() {
   outputSummary.value = "";
   outputSummary.style.display = "none";
   summaryHeader.style.display = "none";
 }
 
-// Function to show the summarize button
 function showSummarizeButton() {
   summarizeButton.style.display = "block";
 }
 
-// Function to hide the summarize button
 function hideSummarizeButton() {
   summarizeButton.style.display = "none";
 }
 
-// Function to show an error message
 function showError(errorMessage) {
   const errorElement = document.createElement("p");
   errorElement.classList.add("error");
@@ -96,7 +88,6 @@ function showError(errorMessage) {
   inputText.insertAdjacentElement("afterend", errorElement);
 }
 
-// Function to clear the error message
 function clearError() {
   const errorElement = document.querySelector(".error");
   if (errorElement) {

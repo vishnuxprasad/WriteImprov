@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WriteImprov</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/home-css.css') }}">
-</head>
-<body>
-  <div class="header">
-    <h1>WriteImprov</h1>
-  </div>
-  <div class="content">
-    <div class="app-card" onclick="openApp('/dictionary')">
-      <h2>Dictionary</h2>
-      <p>English Dictionary made using dictionary API</p>
+  <head>
+    <title>WriteImprov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home-css.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1>WriteImprov</h1>
     </div>
-    <div class="app-card" onclick="openApp('/grammar-correction')">
-      <h2>Grammar Correction</h2>
-      <p>Grammar correction using T5 model & Grammarly SDK editor</p>
+    <div class="content">
+      <div class="app-card" onclick="openApp('/dictionary')">
+        <h2>Dictionary</h2>
+        <p>English Dictionary made using dictionary API</p>
+      </div>
+      <div class="app-card" onclick="openApp('/grammar-correction')">
+        <h2>Grammar Correction</h2>
+        <p>Grammar correction using T5 model & Grammarly SDK editor</p>
+      </div>
+      <div class="app-card" onclick="openApp('/text-summarization')">
+        <h2>Summarization</h2>
+        <p>
+          Text Summarization using sshleifer distilbart cnn 12-6 Natural
+          Language Processing (NLP) Model
+        </p>
+      </div>
     </div>
-    <div class="app-card" onclick="openApp('/text-summarization')">
-      <h2>Summarization</h2>
-      <p>Text Summarization using sshleifer distilbart cnn 12-6 Natural Language Processing (NLP) Model</p>
-    </div>
-    <!-- Add more app cards here -->
-  </div>
 
-  <script>
-    function openApp(url) {
-      window.location.href = url;
-    }
-  </script>
-</body>
+    <script>
+      function openApp(url) {
+        window.location.href = url;
+      }
+    </script>
+  </body>
 </html>

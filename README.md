@@ -19,15 +19,15 @@ The backend of WriteImprov is built using Python and Flask, with the following d
 - `flask-caching`: Used for caching text summarization results.
 - `atexit`: Used to clear the cache on application exit.
 
-Follow the installation instructions within the link to [install `transformers`](https://huggingface.co/docs/transformers/installation).
+Follow the installation instructions within the link to install [`transformers`](https://huggingface.co/docs/transformers/installation).
 
-[Free Dictionary API](https://dictionaryapi.dev/) used to implement **Dictionary** feature.
+[Free Dictionary API](https://dictionaryapi.dev/) is used to implement **Dictionary** feature.
 
-Link for reference regarding the training and usage of `sequence-to-sequence` model based on the `T5` (Text-to-Text Transfer Transformer) architecture used for **Grammar Correction**. [NLP: Building a Grammatical Error Correction Model](https://towardsdatascience.com/nlp-building-a-grammatical-error-correction-model-deep-learning-analytics-c914c3a8331b).
+Link to the article [NLP: Building a Grammatical Error Correction Model](https://towardsdatascience.com/nlp-building-a-grammatical-error-correction-model-deep-learning-analytics-c914c3a8331b) for reference regarding the training and usage of `sequence-to-sequence` model based on the `T5` (Text-to-Text Transfer Transformer) architecture used for **Grammar Correction**.
 
 [Grammarly SDK editor](https://developer.grammarly.com/) was utilized for further enhancing the **Grammar Correction** feature.
 
-Link  for reference regarding [distilbart-cnn-12-6](https://huggingface.co/sshleifer/distilbart-cnn-12-6) model used for **Text Summarization**.
+Link for reference regarding [distilbart-cnn-12-6](https://huggingface.co/sshleifer/distilbart-cnn-12-6) model used for **Text Summarization**.
 
 
 ## Frontend

@@ -7,8 +7,6 @@ WriteImprov is a **Flask** web application that offers a variety of language-rel
 1. **Dictionary**: Look up the meanings, synonyms, antonyms, and examples of words.
 3. **Grammar Correction**: Correct the grammar of a given text.
 2. **Text Summarization**: Summarize the contents of a web article URL or given text/paragraphs.
-
-
 ...
 
 ## Backend
@@ -26,14 +24,14 @@ Follow the installation instructions within the link to [install `transformers`]
 
 Link for reference regarding the training and usage of `sequence-to-sequence` model based on the `T5` (Text-to-Text Transfer Transformer) architecture used for **Grammar Correction**. [NLP: Building a Grammatical Error Correction Model](https://towardsdatascience.com/nlp-building-a-grammatical-error-correction-model-deep-learning-analytics-c914c3a8331b).
 
-Link  for reference regarding [distilbart-cnn-12-6](https://huggingface.co/sshleifer/distilbart-cnn-12-6) model used for **Text Summarization**.
+[Grammarly SDK editor](https://developer.grammarly.com/) was utilized for further enhancing the **Grammar Correction** feature.
 
+Link  for reference regarding [distilbart-cnn-12-6](https://huggingface.co/sshleifer/distilbart-cnn-12-6) model used for **Text Summarization**.
 ...
 
 ## Frontend
 
 The frontend of WriteImprov is built using HTML, CSS, and JavaScript. It provides a user-friendly interface for interacting with the backend features.
-
 ...
 
 ## Usage

@@ -2,12 +2,13 @@
 
 WriteImprov is a **Flask** web application that offers a variety of language-related features, including a dictionary, grammar correction and text summarization. This repository contains the Flask backend and the corresponding frontend.
 
+
 ## Features
 
-1. **Dictionary**: Look up the meanings, synonyms, antonyms, and examples of words.
+1. **Dictionary**: Look up the meanings, synonyms and examples of words.
 3. **Grammar Correction**: Correct the grammar of a given text.
 2. **Text Summarization**: Summarize the contents of a web article URL or given text/paragraphs.
-...
+
 
 ## Backend
 
@@ -27,19 +28,20 @@ Link for reference regarding the training and usage of `sequence-to-sequence` mo
 [Grammarly SDK editor](https://developer.grammarly.com/) was utilized for further enhancing the **Grammar Correction** feature.
 
 Link  for reference regarding [distilbart-cnn-12-6](https://huggingface.co/sshleifer/distilbart-cnn-12-6) model used for **Text Summarization**.
-...
+
 
 ## Frontend
 
 The frontend of WriteImprov is built using HTML, CSS, and JavaScript. It provides a user-friendly interface for interacting with the backend features.
-...
+
 
 ## Usage
 
 1. Install the necessary dependencies and libraries.
-   - For initial setup the models will be downloaded (if not available locally). Refer [Manage huggingface_hub  cache-system](https://huggingface.co/docs/huggingface_hub/guides/manage-cache) for more details.
+   - Refer to the `dependancies-libraries.txt` file within the repository for more information..
 
 2. Run the `backend.py` file to set up the server.
+   - For initial setup the models will be downloaded (if not available locally). Refer [Manage huggingface_hub  cache-system](https://huggingface.co/docs/huggingface_hub/guides/manage-cache) for more details.
    - Once server is set up, access the WriteImprov web application by  opening `http://localhost:1000` in your web browser.
 
 3.  Use the navigation menu to select the desired feature:

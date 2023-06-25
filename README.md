@@ -38,7 +38,7 @@ The frontend of WriteImprov is built using HTML, CSS, and JavaScript. It provide
 ## Usage
 
 1. Install the necessary dependencies and libraries.
-   - Refer to the `dependancies-libraries.txt` file within the repository for more information..
+   - Refer to the `dependancies-libraries.txt` file within the repository for more information.
 
 2. Run the `backend.py` file to set up the server.
    - For initial setup the models will be downloaded (if not available locally). Refer [Manage huggingface_hub  cache-system](https://huggingface.co/docs/huggingface_hub/guides/manage-cache) for more details.
